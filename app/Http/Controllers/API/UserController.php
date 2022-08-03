@@ -80,19 +80,8 @@ class UserController extends Controller
 
     public function getUser(Request $request)
     {
-    //    $user = User::find($id);
-    //  auth()->user()->id;
-    // $user = User::find(Auth::id());
-    // $user = User::find($id);
-        // $user = auth('sanctum')->user()->id;
 
-        // $id = Auth::user()->id;
-        //  $user = User::where('id', $request['id'])->firstOrFail();
-        // $user = auth()->user();
-
-        // $user = Auth::id();
         $id= $request->user()->id;
-        // $user = DB::table('users')->get();
         
         return response()
         ->json(['message' => 'user ID is:'.$id]);

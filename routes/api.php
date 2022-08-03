@@ -16,16 +16,6 @@ use App\Http\Controllers\API\UserController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// Route::get('/hello', function(){
-//     return response()->json(['message'=> 'hello world']);
-// });
-
-// //API route for register new user
-// Route::post('/register', [UserController::class, 'register']);
 Route::post('/user/create',[UserController::class,'register']);
 // //API route for login user
 Route::post('/user/login', [UserController::class, 'login']);
