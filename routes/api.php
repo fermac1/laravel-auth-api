@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +24,16 @@ use App\Http\Controllers\API\AuthController;
 //     return response()->json(['message'=> 'hello world']);
 // });
 
-//API route for register new user
-Route::post('/register', [AuthController::class, 'register']);
-//API route for login user
-Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login']);
+// //API route for register new user
+// Route::post('/register', [UserController::class, 'register']);
+Route::post('/user/create',[UserController::class,'register']);
+// //API route for login user
+Route::post('/user/login', [UserController::class, 'login']);
 
-//Protecting Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/profile', function(Request $request) {
-        return auth()->user();
-    });
+Route::put('/user/update/{id}',[UserController::class,'update']);
 
-    // API route for logout user
-    Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
-});
+Route::delete('/user/delete/{id}',[UserController::class,'delete']);
+
+Route::get('/user',[UserController::class,'getUser']);
+
+Route::get('/users',[UserController::class,'getUsers']);
